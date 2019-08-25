@@ -9,7 +9,7 @@
 		<title>CSI Austin</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="Codebase/Code/static/main.css" />
+		<link rel="stylesheet" href="../static/main.css" />
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -43,27 +43,34 @@
 
 									<!-- incident report -->
 											<h3 class="incident">Incident Report</h3>
-                                            <!-- <p>Incident</p> --> 
-                                            
-                                            <script>
-setTimeout(function() {
+											<p>Incident #</p>
+											<script>
+												var ID = function () {
+												// Math.random should be unique because of its seeding algorithm.
+												// Convert it to base 36 (numbers + letters), and grab the first 9 characters
+												// after the decimal.
+												return '_' + Math.random().toString(36).substr(2, 9); 
+                                            </script>
+</div>
+//                                             <script>
+// setTimeout(function() {
 
-var element = document.getElementById("An_ID");  
- var counter = 0;
-Array.prototype.forEach.call(document.querySelectorAll(".a_random_class"), function(e) {
+// var element = document.getElementById("An_ID");  
+//  var counter = 0;
+// Array.prototype.forEach.call(document.querySelectorAll(".a_random_class"), function(e) {
 
-  var example = element.appendChild(e.cloneNode(true));
-      example.className += " timeline-date";
+//   var example = element.appendChild(e.cloneNode(true));
+//       example.className += " timeline-date";
 
-  var div = document.createElement('div');
-      div.id = "id_frame"+counter;
-      counter++;
-  div.appendChild(example);   
-  element.appendChild(div);
+//   var div = document.createElement('div');
+//       div.id = "id_frame"+counter;
+//       counter++;
+//   div.appendChild(example);   
+//   element.appendChild(div);
 
-});
-}, 300);
-</script>
+// });
+// }, 300);
+// </script>
 												<!-- <p>	# of Cases in System<br>
 													# of Serial Killer Cases</p> -->
 								<div id="copyright" class="container">
