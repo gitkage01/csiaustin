@@ -41,11 +41,31 @@
 							<!-- Content -->
 								<div id="content" class="col-8 col-12-medium">
 
-									<!-- mission statement -->
-											<h3 class="mission">"To ensure a safer world, CSI Austin created the Holmesbot 3000 to detect serial killers and aid law enforcement in stopping them."</h3>
-											<p>There are currently over 2,000 or more serial killers at large in the USA.  Holmesbot 3000 uses data analytics to detect trends through police reports and autopsy reports to aid in the capture of serial killers.  Often times if a serial killer commits a crime through different jurisdictions those different jurisdictions will not communicate or share information in a timely manner.  Our system will be user friendly and give law enforcement agencies the ability to find the information needed to help their cases quickly.</p>
-												<p>	# of Cases in System<br>
-													# of Serial Killer Cases</p>
+									<!-- incident report -->
+											<h3 class="incident">Incident Report</h3>
+                                            <!-- <p>Incident</p> --> 
+                                            
+                                            <script>
+setTimeout(function() {
+
+var element = document.getElementById("An_ID");  
+ var counter = 0;
+Array.prototype.forEach.call(document.querySelectorAll(".a_random_class"), function(e) {
+
+  var example = element.appendChild(e.cloneNode(true));
+      example.className += " timeline-date";
+
+  var div = document.createElement('div');
+      div.id = "id_frame"+counter;
+      counter++;
+  div.appendChild(example);   
+  element.appendChild(div);
+
+});
+}, 300);
+</script>
+												<!-- <p>	# of Cases in System<br>
+													# of Serial Killer Cases</p> -->
 								<div id="copyright" class="container">
 						<ul class="links">
 							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
