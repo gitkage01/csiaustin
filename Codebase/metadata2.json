@@ -1,0 +1,22 @@
+{
+    "objects": [{
+        "properties": {
+            "enaio:objectTypeId": {
+                "value": "IncidentReports"
+            },
+            "Incident": {
+                "value": "123"
+            },
+			"Sex": {
+                "value": "Male"
+            },
+			"Vector":{
+				"value": [0.2,0.3,0.3]
+			}
+			
+        },
+        "contentStreams": [{
+            "cid": "cid_63apple"
+        }]
+    }]
+}

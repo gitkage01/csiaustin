@@ -1,0 +1,7 @@
+{
+  "query": {
+    "statement": "SELECT Incident,Vector FROM IncidentReports WHERE SEX= 'Male' ",
+    "skipCount": 0,
+    "maxItems": 5
+  }
+}

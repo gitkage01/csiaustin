@@ -1,0 +1,35 @@
+<schema xmlns="http://optimal-systems.org/ns/dmscloud/schema/v4.0/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://optimal-systems.org/ns/dmscloud/schema/v4.0/ dmsCloud-schema.xsd">
+        <propertyIntegerDefinition>
+            <id>Incident</id>
+            <propertyType>integer</propertyType>
+            <cardinality>single</cardinality>
+            <required>true</required>
+        </propertyIntegerDefinition>
+		
+		<propertyStringDefinition>
+            <id>Sex</id>
+            <propertyType>string</propertyType>
+            <cardinality>single</cardinality>
+            <required>true</required>
+        </propertyStringDefinition>
+		
+		<propertyDecimalDefinition>
+            <id>Vector</id>
+            <propertyType>decimal</propertyType>
+            <cardinality>multi</cardinality>
+            <required>false</required>
+        </propertyDecimalDefinition>
+
+
+	<typeDocumentDefinition>
+            <id>IncidentReports</id>
+            <baseId>enaio:document</baseId>
+            <propertyReference>Incident</propertyReference>
+            <propertyReference>Sex</propertyReference>
+			<propertyReference>Vector</propertyReference>
+			
+	    <contentStreamAllowed>required</contentStreamAllowed>
+        </typeDocumentDefinition>
+</schema>

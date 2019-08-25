@@ -1,0 +1,816 @@
+{
+	"info": {
+		"_postman_id": "fabb5c6c-3212-4093-b47a-19328c694d87",
+		"name": "Yuuvis® Postman Collection",
+		"description": "Für diese Collection muss eine Environment mit folgenden Parametern erstellt werden:\n\n\"ip\": die IP des Systems, gegen das getestet werden soll\n\n\"objectId\": die ID eines Objektes, für das Indexdaten/ Content geholt werden soll",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "insertObject",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"type": "file"
+						},
+						{
+							"key": "cid_63apple",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{ip}}/dms/objects",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects"
+					]
+				},
+				"description": "Dieser Request benötigt im Body einen Indexdaten- und einen Binärcontent-Part."
+			},
+			"response": []
+		},
+		{
+			"name": "insertObjects",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data",
+							"description": "JSON-File mit den Indexdaten zum Objekt (indexDataSingle.json)",
+							"type": "file"
+						},
+						{
+							"key": "cid_63apple",
+							"description": "E-Mail, die importiert werden soll (import.eml)",
+							"type": "file"
+						},
+						{
+							"key": "cid_60apple",
+							"description": "E-Mail, die importiert werden soll (import2.eml)",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{ip}}/dms/objects",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects"
+					]
+				},
+				"description": "Dieser Request benötigt im Body einen Indexdaten- und einen (oder mehrere) Binärcontent-Part(s)."
+			},
+			"response": []
+		},
+		{
+			"name": "getMetadata",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}"
+					]
+				},
+				"description": "Die Indexdaten des Objektes mit der ID {{objectId}} werden abgeholt."
+			},
+			"response": []
+		},
+		{
+			"name": "getMetadataVersion",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/versions/1",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"versions",
+						"1"
+					]
+				},
+				"description": "Die Indexdaten der Version {{versionNr}} des Objektes mit der ID {{objectId}} werden abgeholt."
+			},
+			"response": []
+		},
+		{
+			"name": "getContent",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/contents/file",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"contents",
+						"file"
+					]
+				},
+				"description": "Der Content des Objektes mit der ID {{objectId}} wird abgeholt."
+			},
+			"response": []
+		},
+		{
+			"name": "getContentOfVersion",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/versions/{{versionNr}}/contents/file",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"versions",
+						"{{versionNr}}",
+						"contents",
+						"file"
+					]
+				},
+				"description": "Der Content der Version {{versionNr}} des Objektes mit der ID {{objectId}} wird abgeholt."
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": {\r\n    \"statement\": \"SELECT * FROM enaio:object\",\r\n    \"skipCount\": 0,\r\n    \"maxItems\": 50\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/search",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"search"
+					]
+				},
+				"description": "Die Suchanfrage wird im Body als JSON übergeben."
+			},
+			"response": []
+		},
+		{
+			"name": "getHistory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/history",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"history"
+					]
+				},
+				"description": "Die Historieneinträge des Objektes mit der ID {{objectId}} werden abgeholt."
+			},
+			"response": []
+		},
+		{
+			"name": "validateContentDigest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/actions/validate/digest",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"actions",
+						"validate",
+						"digest"
+					]
+				},
+				"description": "Der Content-Digest des Objektes mit der ID {{objectId}} wird neu berechnet und mit dem in den Indexdaten gespeicherten Wert vergleichen."
+			},
+			"response": []
+		},
+		{
+			"name": "validateContentDigestOfVersion",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/versions/{{versionNr}}/actions/validate/digest",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"versions",
+						"{{versionNr}}",
+						"actions",
+						"validate",
+						"digest"
+					]
+				},
+				"description": "Der Content-Digest der Version {{versionNr}} des Objektes mit der ID {{objectId}} wird neu berechnet und mit dem in den Indexdaten gespeicherten Wert vergleichen."
+			},
+			"response": []
+		},
+		{
+			"name": "updateDmsObject",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"objects\": [{\r\n\t\t\"properties\": {\r\n\t\t\t\"enaio:objectTypeId\": {\r\n\t\t\t\t\"value\": \"document\"\r\n\t\t\t},\r\n\t\t\t\"Name\": {\r\n\t\t\t\t\"value\": \"Update Email\"\r\n\t\t\t}\r\n\t\t}\r\n\t}]\r\n}"
+				},
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}"
+					]
+				},
+				"description": "Die Metadaten des Objektes mit der ID {{objectId}} werden aktualisiert"
+			},
+			"response": []
+		},
+		{
+			"name": "updateContent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/octet-stream",
+						"disabled": true
+					},
+					{
+						"key": "Content-Disposition",
+						"value": "attachment; filename=\"image.jpg\""
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {
+					"mode": "file"
+				},
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/contents/file",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"contents",
+						"file"
+					]
+				},
+				"description": "Der Content des Objektes mit der ID {{objectId}} wird aktualisiert."
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDmsObject",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}"
+					]
+				},
+				"description": "Das Objekt mit der ID {{objectId}} wird gelöscht."
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDmsObjectVersion",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/versions/{{versionNr}}",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"versions",
+						"{{versionNr}}"
+					]
+				},
+				"description": "Die Version {{versionNr}} des Objektes mit der ID {{objectId}} wird gelöscht."
+			},
+			"response": []
+		},
+		{
+			"name": "getImageRenditionVersion",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"type": "text",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/versions/{{versionNr}}/contents/renditions/slide",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"versions",
+						"{{versionNr}}",
+						"contents",
+						"renditions",
+						"slide"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPdfRenditionVersion",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"type": "text",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/versions/{{versionNr}}/contents/renditions/pdf",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"versions",
+						"{{versionNr}}",
+						"contents",
+						"renditions",
+						"pdf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTextRenditionVersion",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"type": "text",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/versions/{{versionNr}}/contents/renditions/text",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"versions",
+						"{{versionNr}}",
+						"contents",
+						"renditions",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getImageRendition",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"type": "text",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/contents/renditions/slide",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"contents",
+						"renditions",
+						"slide"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPdfRendition",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"type": "text",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/contents/renditions/pdf",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"contents",
+						"renditions",
+						"pdf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTextRendition",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"type": "text",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/contents/renditions/text",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"contents",
+						"renditions",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getExtrationRendition",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"type": "text",
+						"value": "{{key}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/dms/objects/{{objectId}}/contents/renditions/extract",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"dms",
+						"objects",
+						"{{objectId}}",
+						"contents",
+						"renditions",
+						"extract"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get raw tenant schema",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{ip}}/admin/schema",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"admin",
+						"schema"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validate schema",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file"
+				},
+				"url": {
+					"raw": "https://{{ip}}/admin/schema/validate",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"admin",
+						"schema",
+						"validate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update schema",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file"
+				},
+				"url": {
+					"raw": "https://{{ip}}/admin/schema/",
+					"protocol": "https",
+					"host": [
+						"{{ip}}"
+					],
+					"path": [
+						"admin",
+						"schema",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "1c956d74-131d-4d75-a0a3-48124cfbedbd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "49b29f85-59d7-4c2c-9b33-bc0664d5b2d6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5594032d-3f14-42bf-809f-4fd916bc8aa6",
+			"key": "key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "a10aee5e-d8c3-4d4c-a978-2efde03cc960",
+			"key": "ip",
+			"value": "api.yuuvis.io",
+			"type": "string"
+		},
+		{
+			"id": "c60aee5e-d8c3-1337-a978-2efde03c2610",
+			"key": "objectId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
