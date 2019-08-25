@@ -2,15 +2,17 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 @app.route('/')
-def student():
-   return render_template('student.html')
+def load():
+   return render_template('index.html')
 
-@app.route('/result',methods = ['POST', 'GET'])
-def result():
-   if request.method == 'POST':
-       print("Hello Results Page")
-       result = request.form
-       return render_template("result.html",result = result)
+@app.route('/autopsy',methods = ['POST', 'GET'])
+def autopsy():
+   return render_template('autopsy-report.html')
+
+
+@app.route('/incident',methods = ['POST', 'GET'])
+def incident():
+   return render_template('police-report.html')
 
 if __name__ == '__main__':
    app.run(debug = True)
