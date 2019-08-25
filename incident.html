@@ -41,9 +41,29 @@
 							<!-- Content -->
 								<div id="content" class="col-8 col-12-medium">
 
-									<!-- mission statement -->
-											<h3 class="mission">Incident Report</h3>
-											<!-- <p></p> -->
+									<!-- incident report -->
+											<h3 class="incident">Incident Report</h3>
+                                            <!-- <p>Incident</p> --> 
+                                            
+                                            <script>
+setTimeout(function() {
+
+var element = document.getElementById("An_ID");  
+ var counter = 0;
+Array.prototype.forEach.call(document.querySelectorAll(".a_random_class"), function(e) {
+
+  var example = element.appendChild(e.cloneNode(true));
+      example.className += " timeline-date";
+
+  var div = document.createElement('div');
+      div.id = "id_frame"+counter;
+      counter++;
+  div.appendChild(example);   
+  element.appendChild(div);
+
+});
+}, 300);
+</script>
 												<!-- <p>	# of Cases in System<br>
 													# of Serial Killer Cases</p> -->
 								<div id="copyright" class="container">
